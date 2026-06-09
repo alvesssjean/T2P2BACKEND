@@ -18,7 +18,7 @@ class ProdutoService:
         return self.repository.listar_todos()
     
     def criar_produto(self, produto_dados: ProdutoCreate) -> ProdutoModel:
-        self.repository.criar(produto_dados)
+        return self.repository.criar(produto_dados)
 
     def deletar_produto(self, produto_id: int) -> None:
         produto = self.obter_produto(produto_id)
