@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, Boolean
 from app.database import Base
 
 class ProdutoModel(Base):
@@ -7,3 +7,4 @@ class ProdutoModel(Base):
     nome = Column(String, nullable=False)
     preco = Column(Float, nullable=False)
     descricao = Column(String, nullable=True)
+    ativo = Column(Boolean, default=True)
