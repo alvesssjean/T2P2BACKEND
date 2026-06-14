@@ -38,22 +38,31 @@ O projeto adota uma estrutura modular e dividida em responsabilidades claras den
 git clone <url-do-seu-repositorio>
 cd P2BACKEND
 
-2. Configurar as Variáveis de AmbienteCrie um arquivo .env na raiz do projeto baseado no modelo fornecido:Bashcp .env.example .env
+2. Configurar as Variáveis de Ambiente
+Crie um arquivo .env na raiz do projeto baseado no modelo fornecido
+.env.example .env
 (Abra o arquivo .env e ajuste as credenciais se achar necessário).
 
-3. Subir os Bancos de Dados com DockerO projeto utiliza dois contêineres PostgreSQL isolados: um para desenvolvimento (porta 5432) e outro para os testes (porta 5433).
+3. Subir os Bancos de Dados com Docker
+O projeto utiliza dois contêineres PostgreSQL isolados: um para desenvolvimento (porta 5432) e outro para os testes (porta 5433).
+
 docker compose up -d
 
-4. Configurar o Ambiente Virtual (Python)Bash# Criar o ambiente virtual
+4. Configurar o Ambiente Virtual (Python)
+Criar o ambiente virtual:
+
 python -m venv venv
 
 # Ativar o ambiente virtual (Windows)
+
 .\venv\Scripts\activate
 
 # Instalar as dependências
+
 pip install -r requirements.txt
 
 5. Iniciar o Servidor da API
+
 uvicorn app.main:app --reload
 
 A API estará disponível em: http://127.0.0.1:8000
@@ -61,6 +70,7 @@ A documentação interativa (Swagger UI) estará em: http://127.0.0.1:8000/docs
 Como Rodar os Testes e Cobertura
 Os testes foram desenvolvidos utilizando o banco de dados volátil e isolado db_test (porta 5433) para garantir o isolamento total de estado entre execuções.
 Para rodar todos os testes automatizados e verificar o relatório de cobertura de código (pytest-cov), execute o seguinte comando no seu terminal com o ambiente virtual ativo:
+
 pytest --cov=app -v
 
 
