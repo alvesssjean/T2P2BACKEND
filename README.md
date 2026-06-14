@@ -33,7 +33,7 @@ O projeto adota uma estrutura modular e dividida em responsabilidades claras den
 
 ## Como Executar o Projeto
 
-1. Clonar o RepositórioBash
+1. Clonar o Repositório
 
 git clone <url-do-seu-repositorio>
 cd P2BACKEND
@@ -41,7 +41,8 @@ cd P2BACKEND
 2. Configurar as Variáveis de AmbienteCrie um arquivo .env na raiz do projeto baseado no modelo fornecido:Bashcp .env.example .env
 (Abra o arquivo .env e ajuste as credenciais se achar necessário).
 
-3. Subir os Bancos de Dados com DockerO projeto utiliza dois contêineres PostgreSQL isolados: um para desenvolvimento (porta 5432) e outro para os testes (porta 5433).Bashdocker compose up -d
+3. Subir os Bancos de Dados com DockerO projeto utiliza dois contêineres PostgreSQL isolados: um para desenvolvimento (porta 5432) e outro para os testes (porta 5433).
+docker compose up -d
 
 4. Configurar o Ambiente Virtual (Python)Bash# Criar o ambiente virtual
 python -m venv venv
