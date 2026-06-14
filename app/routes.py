@@ -27,3 +27,8 @@ def deletar(produto_id: int, db: Session = Depends(get_db)):
     service = ProdutoService(db)
     return service.deletar_produto(produto_id)
 
+@router.put("/{produto_id}", response_model=ProdutoResponse)
+def alterar(produto_id: int, payload: ProdutoCreate, db: Session = Depends(get_db)):
+    service = ProdutoService(db)
+    return service.alterar_produto(produto_id, payload)
+

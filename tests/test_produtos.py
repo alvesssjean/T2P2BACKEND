@@ -92,3 +92,19 @@ def test_validar_isolamento_de_estado_entre_execucoes(client):
 def test_criar_produto_payload_invalido_retorna_422(client, payload_invalido):
     response = client.post("/produtos", json=payload_invalido)
     assert response.status_code == 422
+
+def test_atualizar_produto_sucesso(client):
+    """Valida a atualização completa de um produto existente (Status 200)."""
+    payload_original = {"nome": "Teclado Antigo", "preco": 100.0, "descricao": "Sem RGB", "ativo": True}
+    post_res = client.post("/produtos", json=payload_original)
+    id_produto = post_res.json()["id"]
+
+    payload_atualizado = {"nome": "Teclado Mecânico Premium", "preco": 450.0, "descricao": "Com Switch Blue e RGB", "ativo": True}
+
+    put_res = client.put(f"/produtos/{id_produto}", json=payload_atualizado)
+
+    assert put_res.status_code == 200
+    dados_retornados = put_res.json()
+    assert dados_retornados["nome"] == "Teclado Mecânico Premium"
+    assert dados_retornados["preco"] == 450.0
+    assert dados_retornados["descricao"] == "Com Switch Blue e RGB"

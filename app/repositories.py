@@ -22,3 +22,13 @@ class ProdutoRepository:
     def deletar(self, produto: ProdutoModel) -> None:
         self.db.delete(produto)
         self.db.commit()
+
+    def atualizar(self, produto: ProdutoModel, dados_atualizacao: ProdutoCreate) -> ProdutoModel:
+        produto.nome = dados_atualizacao.nome
+        produto.preco = dados_atualizacao.preco
+        produto.descricao = dados_atualizacao.descricao
+        produto.ativo = dados_atualizacao.ativo
+
+        self.db.commit()      
+        self.db.refresh(produto) 
+        return produto

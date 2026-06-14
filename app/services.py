@@ -23,3 +23,7 @@ class ProdutoService:
     def deletar_produto(self, produto_id: int) -> None:
         produto = self.obter_produto(produto_id)
         self.repository.deletar(produto)
+
+    def alterar_produto(self, produto_id: int, produto_dados: ProdutoCreate) -> ProdutoModel:
+        produto_existente = self.obter_produto(produto_id)
+        return self.repository.atualizar(produto_existente, produto_dados)
